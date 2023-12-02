@@ -1,0 +1,114 @@
+1. positive negative Accept an array of 5 numbers
+read -p "Enter 5 numbers separated by spaces: " numbers
+array=($numbers)
+positive=()
+negative=()
+# Iterate through the array and classify numbers as positive or negative
+for num in "${array[@]}"; do
+if ((num > 0)); then
+positive+=($num)
+elif ((num < 0)); then
+negative+=($num)
+fi
+done
+echo "Positive numbers: ${positive[*]}"
+echo "Negative numbers: ${negative[*]}"
+
+
+
+2. even odd 5 numbers 
+read -p "Enter 5 numbers separated by spaces: " numbers
+array=($numbers)
+even=()
+odd=()
+# Iterate through the array and classify numbers as even or odd
+for num in "${array[@]}"; do
+if ((num % 2 == 0)); then
+even+=($num)
+else
+odd+=($num)
+fi
+done
+echo "Even numbers: ${even[*]}"
+echo "Odd numbers: ${odd[*]}"
+
+
+
+3. ascending descending numbers
+read -p "Enter 5 numbers separated by spaces: " numbers
+array=($numbers)
+# Sort the array in ascending order
+sorted_asc=($(echo "${array[@]}" | tr ' ' '\n' | sort -n))
+# Sort the array in descending order
+sorted_desc=($(echo "${array[@]}" | tr ' ' '\n' | sort -nr))
+echo "Numbers in ascending order: ${sorted_asc[*]}"
+echo "Numbers in descending order: ${sorted_desc[*]}"
+
+
+
+4. smallest and largest number
+read -p "Enter 5 numbers separated by spaces: " numbers
+array=($numbers)
+min=${array[0]}
+max=${array[0]}
+
+for num in "${array[@]}"; do
+if ((num < min)); then
+min=$num
+fi
+if ((num > max)); then
+max=$num
+fi
+done
+echo "Smallest number: $min"
+echo "Largest number: $max"
+
+
+5. fibonacci
+read -p "Enter the number of terms in fibonacci series " n
+a=0
+b=1
+echo -n "Fibonacci Series up to terms: $a $b"
+for ((i=2; i<n; i++)); do
+c=$((a + b))
+echo -n " $c"
+a=$b
+b=$c
+done
+echo
+
+
+6. repeatedly execute ls date echo
+while true; do
+ls
+date
+echo "Hello, world!"
+sleep 1
+done
+
+
+7. details related to shell, path and home
+echo "Shell: $SHELL"
+echo "Home directory: $HOME"
+echo "Path: $PATH"
+
+
+8. to create two files
+read -p "Enter the name of the first file: " file1
+read -p "Enter the name of the second file: " file2
+touch "$file1" "$file2"
+echo "Files $file1 and $file2 created.
+
+
+9. 3 files using for loop
+for i in 1 2 3; do
+touch "f$i"
+echo "File f$i created."
+done
+
+
+10.change file names 
+read -p "Enter the old filename: " old_filename
+read -p "Enter the new filename: " new_filename
+mv "$old_filename" "$new_filename"
+echo "File name changed from $old_filename to $new_filename.
